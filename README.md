@@ -1,4 +1,4 @@
-# Sportchek Bot Automation
+# Shoebot Automation
 
 The goal of this repository is to automate the purchasing of a shoe from the item shoe page all the way to end of checkout. 
 
