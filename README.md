@@ -24,4 +24,5 @@ The goal of this repository is to automate the purchasing of a shoe from the ite
     expiry_date_text: 0522  
     cvd: 111  
 
-4. Open command prompt/terminal, cd into the directory. Run `python purchase.py`
+4. Open the `purchase.py` file in a text editor. Change the `url` variable to the url of the shoe detail page on Sportchek. Save and close.
+5. Open command prompt/terminal, cd into the directory. Run `python purchase.py`
