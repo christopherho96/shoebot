@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import time
 
 url = "https://www.sportchek.ca/categories/men/footwear/basketball-shoes/product/nike-mens-air-jordan-13-retro-basketball-shoes-color-333316063_10-333316063.html#333316063%5Bcolor%5D=333316063_10"
@@ -9,21 +10,28 @@ try:
             info.append(line.split(":")[1].strip())
 except Exception as e:
     print("Error populating personal info into script. Please make sure info.txt is created with correct formatting below:")
-    print("first_name: John\nlast_name: Doe\naddress: 1 Apple Road\ntown: Oakville\nprovince: Ontario\npostalCode: "
-          "Z1X0K7\nemail: johndoe@gmail.com\nphone: 4161111111\ncard_number: 0000111122223333\nexpiry_date_text: "
-          "0522\ncvd: 111")
+    print("shoe_size: 9\nfirst_name: John\nlast_name: Doe\naddress: 1 Apple Road\ntown: Oakville\nprovince: "
+          "Ontario\npostalCode: Z1X0K7\nemail: johndoe@gmail.com\nphone: 4161111111\ncard_number: "
+          "0000111122223333\nexpiry_date_text: 0522\ncvd: 111")
     quit()
 try:
     #start up chrome browser
-    browser = webdriver.Chrome('./chromedriver')
+    # options = webdriver.ChromeOptions()
+    # options.add_argument("user-data-dir=C:\\path\\to\\chrome\\user data")
+    # browser = webdriver.Chrome("./chromedriver", options=options)
+    browser = webdriver.Chrome("./chromedriver")
     browser.set_window_size(1024, 600)
     browser.maximize_window()
     start_time = time.time()
     browser.get(url)
 
     #add shoe to cart
-    browser.find_element_by_xpath("//button[@class='pop-up__newsletter-close']").click()
-    time.sleep(1)
+    try:
+        browser.find_element_by_xpath("//button[@class='pop-up__newsletter-close']").click()
+        time.sleep(1)
+    except Exception as e:
+        print("Could not find bottom banner popup")
+        print(e)
     browser.find_element_by_xpath("//*[@class='option-tiles__items']/*[@title='{}']/span[text()='{}']".format(info[0], info[0])).click()
     time.sleep(1)
     browser.find_element_by_xpath("//button[@class='add-cart product-detail__button product-detail__button-icon']").click()
@@ -44,7 +52,9 @@ try:
     browser.find_element_by_xpath("//select[@id='province']/option[text()='{}']".format(info[5])).click()
     browser.find_element_by_xpath("//input[@name='postalCode']").click()
     browser.find_element_by_xpath("//input[@name='postalCode']").send_keys(info[6])
+    time.sleep(1)
     browser.find_element_by_xpath("//input[@name='email']").send_keys(info[7])
+    time.sleep(1)
     browser.find_element_by_xpath("//input[@name='phone']").click()
     browser.find_element_by_xpath("//input[@name='phone']").send_keys(info[8])
     browser.find_element_by_xpath("//label[@name='Sportchek_Regular_Shipping']/span[@class='radio']").click()
@@ -57,7 +67,7 @@ try:
         print(e)
 
     #fill in bank info
-    time.sleep(5)
+    time.sleep(10)
     browser.switch_to.frame(browser.find_element_by_id("ctfs-iframe"))
     time.sleep(2)
     browser.find_element_by_xpath("//input[@id='card_number']").send_keys(info[9])
