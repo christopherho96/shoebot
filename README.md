@@ -12,6 +12,7 @@ The goal of this repository is to automate the purchasing of a shoe from the ite
 2. Create an `info.txt` file within the cloned directory.
 3. Use the following template to fill out your information. Make sure the template is exact.
 
+    shoe_size: 8.5
     first_name: John  
     last_name: Doe  
     address: 1 Apple Road    
