@@ -16,6 +16,7 @@ The goal of this repository is to automate the purchasing of a shoe from the ite
     first_name: John  
     last_name: Doe  
     address: 1 Apple Road    
+    address_unit: 10
     town: Oakville   
     province: Ontario  
     postalCode: Z1L2F4    

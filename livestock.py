@@ -1,7 +1,7 @@
 from selenium import webdriver
 import time
 
-url = "https://www.deadstock.ca/products/adidas-originals-superstar-core-black-10?variant=32981988343893"
+url = "https://www.deadstock.ca/collections/new-arrivals/products/jordan-1-retro-high-og-gs-hyper-royal-white"
 info = []
 try:
     with open('info.txt') as f:
@@ -9,8 +9,8 @@ try:
             info.append(line.split(":")[1].strip())
 except Exception as e:
     print("Error populating personal info into script. Please make sure info.txt is created with correct formatting below:")
-    print("shoe_size: 9\nfirst_name: John\nlast_name: Doe\naddress: 1 Apple Road\ntown: Oakville\nprovince: "
-          "Ontario\npostalCode: Z1X0K7\nemail: johndoe@gmail.com\nphone: 4161111111\ncard_number: "
+    print("shoe_size: 9\nfirst_name: John\nlast_name: Doe\naddress: 1 Apple Road\naddress_unit: 10\ntown: "
+          "Oakville\nprovince: Ontario\npostalCode: Z1X0K7\nemail: johndoe@gmail.com\nphone: 4161111111\ncard_number: "
           "0000111122223333\nexpiry_date_text: 0522\ncvd: 111")
     quit()
 try:
@@ -38,10 +38,10 @@ try:
         browser.find_element_by_xpath("//input[@placeholder='First name']").send_keys(info[1])
         browser.find_element_by_xpath("//input[@placeholder='Last name']").send_keys(info[2])
         browser.find_element_by_xpath("//input[@placeholder='Address']").send_keys(info[3])
-        browser.find_element_by_xpath("//input[@placeholder='Apartment, suite, etc. (optional)']").send_keys("202")
-        browser.find_element_by_xpath("//input[@placeholder='City']").send_keys(info[4])
-        browser.find_element_by_xpath("//input[@placeholder='Postal code']").send_keys(info[6])
-        browser.find_element_by_xpath("//input[@placeholder='Phone']").send_keys(info[8])
+        browser.find_element_by_xpath("//input[@placeholder='Apartment, suite, etc. (optional)']").send_keys(info[4])
+        browser.find_element_by_xpath("//input[@placeholder='City']").send_keys(info[5])
+        browser.find_element_by_xpath("//input[@placeholder='Postal code']").send_keys(info[7])
+        browser.find_element_by_xpath("//input[@placeholder='Phone']").send_keys(info[9])
         browser.find_element_by_id("continue_button").click()
     except Exception as e:
         print("Form for personal info now found. Skipping to next page")
@@ -51,14 +51,14 @@ try:
     time.sleep(1)
     credit_card_text_fields = browser.find_elements_by_class_name("card-fields-iframe")
     credit_card_text_fields[0].click()
-    credit_card_text_fields[0].send_keys("0000")
     credit_card_text_fields[0].send_keys("1111")
-    credit_card_text_fields[0].send_keys("2222")
-    credit_card_text_fields[0].send_keys("3333")
+    credit_card_text_fields[0].send_keys("1111")
+    credit_card_text_fields[0].send_keys("1111")
+    credit_card_text_fields[0].send_keys("1111")
 
-    credit_card_text_fields[1].send_keys("TEST")
-    credit_card_text_fields[2].send_keys("04")
-    credit_card_text_fields[2].send_keys("25")
+    credit_card_text_fields[1].send_keys("TEst")
+    credit_card_text_fields[2].send_keys("01")
+    credit_card_text_fields[2].send_keys("23")
     credit_card_text_fields[3].send_keys("111")
     time.sleep(1)
     browser.find_element_by_id("continue_button").click()
