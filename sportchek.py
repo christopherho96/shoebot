@@ -15,7 +15,7 @@ except Exception as e:
           "0000111122223333\nexpiry_date_text: 0522\ncvd: 111")
     quit()
 try:
-    #start up chrome browser
+    #start up chrome browser add this word for fun
     # options = webdriver.ChromeOptions()
     # options.add_argument("user-data-dir=C:\\path\\to\\chrome\\user data")
     # browser = webdriver.Chrome("./chromedriver", options=options)
