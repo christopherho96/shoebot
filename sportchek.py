@@ -18,7 +18,7 @@ try:
     #start up chrome browser add this word for fun
     # options = webdriver.ChromeOptions()
     # options.add_argument("user-data-dir=C:\\path\\to\\chrome\\user data")
-    # browser = webdriver.Chrome("./chromedriver", opclknkb cvbtions=options)
+    # browser = webdriver.Chrome("./chromedriver", options=options)
     browser = webdriver.Chrome("./chromedriver")
     browser.set_window_size(1024, 600)
     browser.maximize_window()
