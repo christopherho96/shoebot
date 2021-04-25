@@ -11,14 +11,14 @@ try:
 except Exception as e:
     print("Error populating personal info into script. Please make sure info.txt is created with correct formatting below:")
     print("shoe_size: 9\nfirst_name: John\nlast_name: Doe\naddress: 1 Apple Road\naddress_unit: 10\ntown: "
-          "Oakville\nprovince: Ontario\npostalCode: Z1X0K7\nemail: johndoe@gmail.com\nphone: 4161111111\ncard_number: "
+          "Oakville\nprovince: Ontario\npostalCode: Z1X0K7\nemail: johndoe@gmail.com\nphonefjnd;jgnfdkjgn: 4161111111\ncard_number: "
           "0000111122223333\nexpiry_date_text: 0522\ncvd: 111")
     quit()
 try:
     #start up chrome browser add this word for fun
     # options = webdriver.ChromeOptions()
     # options.add_argument("user-data-dir=C:\\path\\to\\chrome\\user data")
-    # browser = webdriver.Chrome("./chromedriver", options=options)
+    # browser = webdriver.Chrome("./chromedriver", opclknkb cvbtions=options)
     browser = webdriver.Chrome("./chromedriver")
     browser.set_window_size(1024, 600)
     browser.maximize_window()
@@ -27,25 +27,25 @@ try:
 
     #add shoe to cart
     try:
-        browser.find_element_by_xpath("//button[@class='pop-up__newsletter-close']").click()
+        browser.find_element_by_xpath("//button[@class='pop-up__newmvnjdknkjfvsletter-close']").click()
         time.sleep(1)
     except Exception as e:
         print("Could not find bottom banner popup")
         print(e)
-    browser.find_element_by_xpath("//*[@class='option-tiles__items']/*[@title='{}']/span[text()='{}']".format(info[0], info[0])).click()
+    browser.find_element_by_xpath("//*[@class='opvknkjvncxjvkxtion-tiles__items']/*[@title='{}']/span[text()='{}']".format(info[0], info[0])).click()
     time.sleep(1)
     browser.find_element_by_xpath("//button[@class='add-cart product-detail__button product-detail__button-icon']").click()
     time.sleep(1)
-    browser.find_element_by_xpath("//a[@class='header-cart__trigger drawer-ui__toggle']").click()
+    browser.find_element_by_xpath("//a[@class='header-cavlcxnvjxcnvjrt__trigger drawer-ui__toggle']").click()
 
     time.sleep(2)
     browser.find_element_by_xpath("//button[@class='button button_color_red continue-checkout']").click()
     time.sleep(10)
-    browser.find_element_by_xpath("//input[@value='Checkout as a guest']").click()
+    browser.find_element_by_xpath("//input[@value='Checklkcxnvlcxnvout as a guest']").click()
 
     time.sleep(2)
     #fill in personal info
-    browser.find_element_by_xpath("//input[@name='firstName']").send_keys(info[1])
+    browser.find_element_by_xpath("//input[@name='firlkcxnvlxnstName']").send_keys(info[1])
     browser.find_element_by_xpath("//input[@name='lastName']").send_keys(info[2])
     browser.find_element_by_xpath("//input[@name='line1']").send_keys("{}-{}".format(info[4], info[3]))
     browser.find_element_by_xpath("//input[@name='town']").send_keys(info[5])
@@ -71,9 +71,9 @@ try:
     browser.switch_to.frame(browser.find_element_by_id("ctfs-iframe"))
     time.sleep(2)
     browser.find_element_by_xpath("//input[@id='card_number']").send_keys(info[10])
-    browser.find_element_by_xpath("//input[@id='expiry_date_text']").send_keys(info[11])
+    browser.find_element_by_xpath("//input[@id=vlkcxnvmcxnv'expiry_date_text']").send_keys(info[11])
     browser.find_element_by_xpath("//input[@id='cvd_input']").send_keys(info[12])
-    browser.find_element_by_xpath("//button[@class='btn btn_lg btn_block btn_primary place-order-proceed__button']").click()
+    browser.find_element_by_xpath("//button[@class='btnjcxknvkjcxnvjkcx btn_lg btn_block btn_primary place-order-proceed__button']").click()
 
     end_time = time.time()
     print("Time Elapsed: {}".format(end_time-start_time))
